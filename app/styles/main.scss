@@ -1,0 +1,72 @@
+$icon-font-path: '../fonts/';
+
+// bower:scss
+@import "bower_components/bootstrap-sass/assets/stylesheets/_bootstrap.scss";
+// endbower
+
+body {
+	
+
+}
+
+.container {
+	background-color: #161639;
+	select, input {
+		border-radius: 0px;
+  	margin-bottom: 30px;
+
+  	&.error {
+  		border: 2px solid #ff0000;
+  	}
+	}
+
+	select {
+		background: url(http://cdn1.iconfinder.com/data/icons/cc_mono_icon_set/blacks/16x16/br_down.png) no-repeat right #ddd;
+		background-position-x: 97%;
+		-webkit-appearance: none;
+  	-webkit-border-radius: 0px;
+  	-moz-border-radius: 0px;
+	}
+
+	.padding-lr  {
+		padding-left: 20px;
+		padding-right: 20px;
+	}
+
+	.form-wrapper {
+		max-width: 480px;
+		margin: 30px auto;
+	}
+
+	.check {
+		margin: 0;
+	}
+
+	.submit {
+		margin-top: 30px;
+		width: 100%;
+		padding: 10px;
+		border: none;
+		background: #2c2c6d;
+		color: #fff;
+	}
+
+}
+
+label {
+	color: #ffffff;
+	font-weight: 500;
+	display: inline-block;
+	text-align: left;
+	&.terms {
+		float: right;
+	}
+}
+
+span {
+	&.form-error {
+		color: #ff0000;
+	}
+}
+
+
