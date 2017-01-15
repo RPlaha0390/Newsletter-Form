@@ -1,72 +1,70 @@
-$icon-font-path: '../fonts/';
+$icon-font-path: "../fonts/";
 
 // bower:scss
 @import "bower_components/bootstrap-sass/assets/stylesheets/_bootstrap.scss";
+
 // endbower
 
-body {
-	
-
-}
-
 .container {
-	background-color: #161639;
-	select, input {
-		border-radius: 0px;
-  	margin-bottom: 30px;
+  background-color: #161639;
 
-  	&.error {
-  		border: 2px solid #ff0000;
-  	}
-	}
+  select, input {
+    border-radius: 0px;
+    margin-bottom: 30px;
 
-	select {
-		background: url(http://cdn1.iconfinder.com/data/icons/cc_mono_icon_set/blacks/16x16/br_down.png) no-repeat right #ddd;
-		background-position-x: 97%;
-		-webkit-appearance: none;
-  	-webkit-border-radius: 0px;
-  	-moz-border-radius: 0px;
-	}
+    &.error {
+      border: 2px solid #ff0000;
+    }
+  }
 
-	.padding-lr  {
-		padding-left: 20px;
-		padding-right: 20px;
-	}
+  select {
+    background: url(http://cdn1.iconfinder.com/data/icons/cc_mono_icon_set/blacks/16x16/br_down.png) no-repeat right #ddd;
+    background-position-x: 97%;
+    -webkit-appearance: none;
+  }
 
-	.form-wrapper {
-		max-width: 480px;
-		margin: 30px auto;
-	}
+  .padding-lr {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
 
-	.check {
-		margin: 0;
-	}
+  .form-wrapper {
+    max-width: 480px;
+    margin: 30px auto;
+  }
 
-	.submit {
-		margin-top: 30px;
-		width: 100%;
-		padding: 10px;
-		border: none;
-		background: #2c2c6d;
-		color: #fff;
-	}
+  .check {
+    margin: 0;
+  }
 
+  .submit {
+    margin-top: 30px;
+    width: 100%;
+    padding: 10px;
+    border: none;
+    background: #2c2c6d;
+    color: #fff;
+  }
 }
 
 label {
-	color: #ffffff;
-	font-weight: 500;
-	display: inline-block;
-	text-align: left;
-	&.terms {
-		float: right;
-	}
+  color: #ffffff;
+  font-weight: 500;
+  display: inline-block;
+  text-align: left;
+
+  &.terms {
+    float: right;
+  }
 }
 
 span {
-	&.form-error {
-		color: #ff0000;
-	}
+  &.form-error {
+    color: #ff0000;
+    display: none;
+
+    &.js-show {
+      display: inline-block;
+    }
+  }
 }
-
-
