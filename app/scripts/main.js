@@ -1,9 +1,25 @@
 /* global $ */
 'use strict';
-
+ 
+function getAge(dateString) {
+  var today = new Date();
+  var birthDate = new Date(dateString);
+  var yearAge = today.getFullYear() - birthDate.getFullYear();
+  var month = today.getMonth() - birthDate.getMonth();
+ 
+  if (month < 0 || (month === 0 && today.getDate() < birthDate.getDate())) {
+    yearAge--;
+  }
+  return yearAge;
+}
+ 
+function ValidateEmail(email) {
+  var expr = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  return expr.test(email);
+};
+ 
 $(document).ready(function() {
-  var 
-  	requiredAttributes = {
+  var requiredAttributes = {
     $favouriteMusic: 'contest1_name',
     $firstName: 'first_name',
     $country: 'country',
@@ -14,19 +30,17 @@ $(document).ready(function() {
     $privacyCheck: 'privacy_check'
   },
   $submit = $('.submit');
-
+ 
   // click function for validation
   $submit.on('click', function() {
-
-  	var 
-  		$email = $('input[name="email"]'),
-  		$day = $('select[name="birth_day"]'), 
-  		$month = $('select[name="birth_month"]'),
-  		$year = $('select[name="birth_year"]');
-
+    var $email = $('input[name="email"]');
+    var $day = $('select[name="birth_day"]');
+    var $month = $('select[name="birth_month"]');
+    var $year = $('select[name="birth_year"]');
+ 
     $.each(requiredAttributes, function(key, value) {
       var attributeName = $('[name="' + value + '"]');
-
+ 
       if (attributeName.val() === '') {
         $('[name="' + value + '"]')
           .addClass('error')
@@ -39,42 +53,22 @@ $(document).ready(function() {
           .removeClass('js-show');
       }
     });
-
-    function getAge(dateString) {
-      var 
-      	today = new Date(),
-      	birthDate = new Date(dateString),
-      	yearAge = today.getFullYear() - birthDate.getFullYear(),
-      	month = today.getMonth() - birthDate.getMonth();
-
-      if (month < 0 || (month === 0 && today.getDate() < birthDate.getDate())) {
-          yearAge--;
-      }
-      return yearAge;
-    }
-
+ 
     if (getAge($year.val() + '/' + $month.val() + '/' + $day.val()) < 14) {
-    	$year.addClass('error');
-    	$month.addClass('error');
-    	$day.addClass('error');
-    	$('.age-error').addClass('js-show');
+      $year.addClass('error');
+      $month.addClass('error');
+      $day.addClass('error');
+      $('.age-error').addClass('js-show');
     } else {
-    	$('.age-error').removeClass('js-show');
+      $('.age-error').removeClass('js-show');
     }
-
-    function ValidateEmail(email) {
-      var expr = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-      return expr.test(email);
-    };
-
+ 
     if ((!ValidateEmail($email.val())) && $email.val()) {
       $email.addClass('error');
       $('.email-error').addClass('js-show');
+    } else {
+      $email.removeClass('error');
+      $('.email-error').removeClass('js-show');
     }
-    else {
-    	$email.removeClass('error');
-    	$('.email-error').removeClass('js-show');
-    }
-
   });
 });
