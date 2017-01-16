@@ -2,7 +2,6 @@ $icon-font-path: "../fonts/";
 
 // bower:scss
 @import "bower_components/bootstrap-sass/assets/stylesheets/_bootstrap.scss";
-
 // endbower
 
 .container {
@@ -61,6 +60,22 @@ label {
 span {
   &.form-error {
     color: #ff0000;
+    display: none;
+
+    &.js-show {
+      display: inline-block;
+    }
+  }
+  &.age-error {
+  	color: #ff0000;
+    display: none;
+
+    &.js-show {
+      display: inline-block;
+    }
+  }
+  &.email-error {
+  	color: #ff0000;
     display: none;
 
     &.js-show {
