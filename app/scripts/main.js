@@ -12,7 +12,8 @@ function getAge(dateString) {
   }
   return yearAge;
 }
- 
+
+// email validation
 function ValidateEmail(email) {
   var expr = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
   return expr.test(email);
@@ -37,12 +38,14 @@ $(document).ready(function() {
     var $day = $('select[name="birth_day"]');
     var $month = $('select[name="birth_month"]');
     var $year = $('select[name="birth_year"]');
+    var $privacyCheck = $('input[name="privacy_check"]');
  
     $.each(requiredAttributes, function(key, value) {
       var attributeName = $('[name="' + value + '"]');
  
       if (attributeName.val() === '') {
         $('[name="' + value + '"]')
+
           .addClass('error')
           .prev()
           .addClass('js-show');
@@ -53,6 +56,19 @@ $(document).ready(function() {
           .removeClass('js-show');
       }
     });
+
+    // privacy check validation
+    if ($privacyCheck.is(':checked')) {
+	  	$privacyCheck
+			  .removeClass('error')
+	      .prev()
+	      .removeClass('js-show');
+		} else {
+			$privacyCheck
+			  .addClass('error')
+	      .prev()
+	      .addClass('js-show');
+		}
  
     if (getAge($year.val() + '/' + $month.val() + '/' + $day.val()) < 14) {
       $year.addClass('error');
@@ -62,7 +78,8 @@ $(document).ready(function() {
     } else {
       $('.age-error').removeClass('js-show');
     }
- 
+ 		
+
     if ((!ValidateEmail($email.val())) && $email.val()) {
       $email.addClass('error');
       $('.email-error').addClass('js-show');
