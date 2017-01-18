@@ -4,8 +4,11 @@
 function getAge(dateString) {
   var today = new Date();
   var birthDate = new Date(dateString);
+  // console.log(birthDate)
   var yearAge = today.getFullYear() - birthDate.getFullYear();
+  // console.log(birthDate.getFullYear())
   var month = today.getMonth() - birthDate.getMonth();
+  console.log(birthDate.getMonth());
  
   if (month < 0 || (month === 0 && today.getDate() < birthDate.getDate())) {
     yearAge--;
@@ -45,7 +48,6 @@ $(document).ready(function() {
  
       if (attributeName.val() === '') {
         $('[name="' + value + '"]')
-
           .addClass('error')
           .prev()
           .addClass('js-show');
@@ -58,16 +60,16 @@ $(document).ready(function() {
     });
 
     // privacy check validation
-    if ($privacyCheck.is(':checked')) {
+    if (!$privacyCheck.is(':checked')) {
 	  	$privacyCheck
+  		  .addClass('error')
+        .prev()
+        .addClass('js-show');
+		} else {
+			$privacyCheck
 			  .removeClass('error')
 	      .prev()
 	      .removeClass('js-show');
-		} else {
-			$privacyCheck
-			  .addClass('error')
-	      .prev()
-	      .addClass('js-show');
 		}
  
     if (getAge($year.val() + '/' + $month.val() + '/' + $day.val()) < 14) {
